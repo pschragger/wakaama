@@ -16,14 +16,12 @@
  *
  *******************************************************************************/
 
-#include "tests.h"
 #include "CUnit/Basic.h"
 #include "internals.h"
 #include "liblwm2m.h"
+#include "tests.h"
 
-
-static void handle_12345(lwm2m_block_data_t ** blk1,
-                                  const char * uri) {
+static void handle_12345(lwm2m_block_data_t **blk1, const char *uri) {
     uint8_t *buffer = (uint8_t *)"12345";
     size_t bsize;
     uint8_t *resultBuffer = NULL;
@@ -33,8 +31,7 @@ static void handle_12345(lwm2m_block_data_t ** blk1,
     CU_ASSERT_PTR_NULL(resultBuffer)
 }
 
-static void handle_67(lwm2m_block_data_t ** blk1,
-                                  const char * uri) {
+static void handle_67(lwm2m_block_data_t **blk1, const char *uri) {
     uint8_t *buffer = (uint8_t *)"67";
     size_t bsize;
     uint8_t *resultBuffer = NULL;
@@ -46,10 +43,8 @@ static void handle_67(lwm2m_block_data_t ** blk1,
     CU_ASSERT_NSTRING_EQUAL(resultBuffer, "1234567", 7)
 }
 
-
-static void test_block1_nominal(void)
-{
-    lwm2m_block_data_t * blk1 = NULL;
+static void test_block1_nominal(void) {
+    lwm2m_block_data_t *blk1 = NULL;
 
     handle_12345(&blk1, "/1/2/3");
     handle_67(&blk1, "/1/2/3");
@@ -74,9 +69,9 @@ static void test_block1_retransmit(void)
 */
 
 static struct TestTable table[] = {
-        { "test of test_block1_nominal()", test_block1_nominal },
-        //{ "test of test_block1_retransmit()", test_block1_retransmit },
-        { NULL, NULL },
+    {"test of test_block1_nominal()", test_block1_nominal},
+    //{ "test of test_block1_retransmit()", test_block1_retransmit },
+    {NULL, NULL},
 };
 
 CU_ErrorCode create_block1_suit() {
