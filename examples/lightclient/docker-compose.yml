@@ -1,0 +1,7 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  lightclient:
+    image: wakaama_lightclient/wakaama_lightclient_rolling_1
+    build:
+      context: .
+      dockerfile: examples/lightclient/Dockerfile_wakaama_lightclient

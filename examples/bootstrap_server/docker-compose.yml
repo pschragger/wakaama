@@ -1,0 +1,7 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  bootstrap_server:
+    image: wakaama_boostrap_server/wakaama_bootstrap_server_rolling_1
+    build:
+      context: .
+      dockerfile: examples/bootstrap_server/Dockerfile_wakaama_bootstrap_server

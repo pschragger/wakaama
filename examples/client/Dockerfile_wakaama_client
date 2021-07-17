@@ -1,0 +1,22 @@
+FROM ubuntu:latest
+LABEL maintainer.name="Paul Schragger" \
+    maintainer.email="paul.schragger@gmail.com" \
+    version="0.0.1" \
+    description="wakaama client - lwm2m protocol reference stack"
+
+RUN apt-get update
+RUN apt-get install -y cmake make
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY ./examples/client/requirements.txt /usr/src/app/
+
+COPY . .
+
+RUN cmake ./examples/client
+RUN make
+RUN pwd
+RUN ls -al lwm2mclient
+ENTRYPOINT ["/usr/src/app/lwm2mclient","-h","host.docker.internal" ]
+
+

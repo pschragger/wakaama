@@ -1,0 +1,9 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  client:
+    image: wakaama_client/wakaama_client_rolling_1
+    build:
+      context: .
+      dockerfile: examples/client/Dockerfile_wakaama_client
+    ports:
+      - "56830-56835:56830-56835/udp"
